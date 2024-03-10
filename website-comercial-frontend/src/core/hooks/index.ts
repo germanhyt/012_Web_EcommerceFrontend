@@ -1,2 +1,4 @@
 import useThemeSwitcher from "./useThemeSwitcher";
-export { useThemeSwitcher };
+import ProductsProvider, { ProductsContext } from "./ProductsContext";
+
+export { useThemeSwitcher, ProductsContext, ProductsProvider };

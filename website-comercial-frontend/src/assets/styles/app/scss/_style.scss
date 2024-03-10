@@ -1,56 +1,84 @@
 // ========================= Styles ===========================
-body {
-  width: 100vw;
-  height: 100vh;
-  background: #151515;
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
+.slider {
+  width: 350px;
+  height: 350px;
+}
+
+.each-slide-effect > div {
   display: flex;
-  justify-content: center;
   align-items: center;
-}
-
-.example-container {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  display: flex;
   justify-content: center;
-  align-items: center;
+  background-size: cover;
+  height: 350px;
 }
 
-.next,
-.prev {
-  top: calc(50% - 20px);
-  position: absolute;
-  background: white;
-  border-radius: 30px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 18px;
-  z-index: 2;
+.each-slide-effect span {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
 }
 
-.next {
-  right: 10px;
+.bg-triangle {
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%, 0 50%);
 }
 
-.prev {
-  left: 10px;
-  transform: scale(-1);
+.bg-triangle__responsive {
+  clip-path: circle(52.2% at 99% 50%);
 }
 
-img {
-  position: absolute;
-  max-width: 100vw;
-}
+// body {
+//   width: 100vw;
+//   height: 100vh;
+//   background: #151515;
+//   overflow: hidden;
+//   padding: 0;
+//   margin: 0;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .example-container {
+//   width: 100vw;
+//   height: 100vh;
+//   position: relative;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .next,
+// .prev {
+//   top: calc(50% - 20px);
+//   position: absolute;
+//   background: white;
+//   border-radius: 30px;
+//   width: 40px;
+//   height: 40px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   user-select: none;
+//   cursor: pointer;
+//   font-weight: bold;
+//   font-size: 18px;
+//   z-index: 2;
+// }
+
+// .next {
+//   right: 10px;
+// }
+
+// .prev {
+//   left: 10px;
+//   transform: scale(-1);
+// }
+
+// img {
+//   position: absolute;
+//   max-width: 100vw;
+// }
 
 .refresh {
   padding: 10px;
@@ -66,8 +94,6 @@ img {
   align-items: center;
   cursor: pointer;
 }
-
-
 
 // ========================= Styles Examples ===========================
 // .group__text {

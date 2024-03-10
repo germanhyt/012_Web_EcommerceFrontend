@@ -1,11 +1,11 @@
 import "@/assets/styles/app/css/styles.css";
 import "bootstrap";
-// import "@/assets/styles/app/scss/app.scss";
+import "@/assets/styles/app/scss/app.scss";
 
 import { AnimatePresence } from "framer-motion";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { ScrollToTop } from "./components";
-import { PageHeader } from "./components/shared";
+import { PageFooter, PageHeader } from "./components/shared";
 import { Suspense, lazy } from "react";
 
 const Home = lazy(() => import("@/views/Home"));
@@ -22,6 +22,7 @@ function App() {
               <Route path="/" element={<Home />} />
             </Routes>
           </Suspense>
+          <PageFooter />
         </Router>
       </div>
     </AnimatePresence>

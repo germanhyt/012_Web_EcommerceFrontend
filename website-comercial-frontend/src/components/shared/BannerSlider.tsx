@@ -1,94 +1,112 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { wrap } from "popmotion";
-
-const variants = {
-  enter: (direction: number) => {
-    return {
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0,
-    };
-  },
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => {
-    return {
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-    };
-  },
-};
-
-/**
- * Experimenting with distilling swipe offset and velocity into a single variable, so the
- * less distance a user has swiped, the more velocity they need to register as a swipe.
- * Should accomodate longer swipes and short flicks without having binary checks on
- * just distance thresholds and velocity > 0.
- */
-const swipeConfidenceThreshold = 10000;
-const swipePower = (offset: number, velocity: number) => {
-  return Math.abs(offset) * velocity;
-};
+import { motion } from "framer-motion";
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
 
 const BannerSlider = () => {
-  const [[page, direction], setPage] = useState([0, 0]);
-
   const images = [
-    "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709949095/Imagenes_Portafolio/main_yiiuqc.svg",
-    "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709948228/Imagenes_Portafolio/frutos-secos_vhd3fh.svg",
+    {
+      id: 1,
+      img: "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1710026484/Ecommerce-frontend/Frame_37_acvjho.svg",
+      title_right: "",
+      title_middle: "Bienvenido👋",
+      show_title_middle: true,
+    },
+    {
+      id: 2,
+      img: "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709948228/Imagenes_Portafolio/frutos-secos_vhd3fh.svg",
+      title_right: "Frutos Secos Naturales",
+      title_middle: "",
+      show_title_middle: false,
+    },
+    {
+      id: 3,
+      img: "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709948228/Imagenes_Portafolio/menestras_merg9w.svg",
+      title_right: "Menestras Nacionales e Importados",
+      title_middle: "",
+      show_title_middle: false,
+    },
+    {
+      id: 4,
+      img: "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709948229/Imagenes_Portafolio/embutidos_o438sw.svg",
+      title_right: "Embutidos San Fernando",
+      title_middle: "",
+      show_title_middle: false,
+    },
+    {
+      id: 5,
+      img: "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709948227/Ecommerce-frontend/comida-animales_rmntla.svg",
+      title_right: "Comida para Animales",
+      title_middle: "",
+      show_title_middle: false,
+    },
+    {
+      id: 6,
+      img: "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709948227/Ecommerce-frontend/harinas_cc8obz.svg",
+      title_right: "Harinas Naturales",
+      title_middle: "",
+      show_title_middle: false,
+    },
+    {
+      id: 7,
+      img: "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709948227/Ecommerce-frontend/limpieza_ykkaij.svg",
+      title_right: "Productos de Limpieza",
+      title_middle: "",
+      show_title_middle: false,
+    },
   ];
 
-  // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
-  // then wrap that within 0-2 to find our image ID in the array below. By passing an
-  // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
-  // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
-  const imageIndex = wrap(0, images.length, page);
+  const buttonStyle = {
+    width: "30px",
+    border: "0px",
+  };
 
-  const paginate = (newDirection: number) => {
-    setPage([page + newDirection, newDirection]);
+  const properties = {
+    prevArrow: (
+      <button style={{ ...buttonStyle }}>
+        <i className="fa-solid fa-angle-left"></i>
+      </button>
+    ),
+    nextArrow: (
+      <button style={{ ...buttonStyle }}>
+        <i className="fa-solid fa-angle-right"></i>
+      </button>
+    ),
   };
 
   return (
-    <div className="example-container">
-      <AnimatePresence initial={false} custom={direction}>
-        <motion.img
-          key={page}
-          src={images[imageIndex]}
-          custom={direction}
-          variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.2 },
-          }}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={1}
-          onDragEnd={(e, { offset, velocity }) => {
-            console.log(e);
-            const swipe = swipePower(offset.x, velocity.x);
-
-            if (swipe < -swipeConfidenceThreshold) {
-              paginate(1);
-            } else if (swipe > swipeConfidenceThreshold) {
-              paginate(-1);
-            }
-          }}
-        />
-      </AnimatePresence>
-      <div className="next" onClick={() => paginate(1)}>
-        {"‣"}
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="relative "
+    >
+      <div className=" w-[100vw] mt-6 sm:mt-28">
+        <Slide {...properties}>
+          {images.map((e) => {
+            return (
+              <div key={e.id} className="bg-cover overflow-hidden relative">
+                {e.show_title_middle ? (
+                  <div className="absolute top-0 w-full h-full flex justify-center items-center">
+                    <h2 className="z-50 text-white text-xs sm:text-[32px] text-center font-nunito font-bold">{e.title_middle}</h2>
+                  </div>
+                ) : (
+                  <>
+                    <div className="absolute top-0 right-0 h-full">
+                      <div className="bg-red-600 w-[150px] sm:w-[400px] h-full px-5 bg-triangle flex items-center justify-center text-xs sm:text-lg">
+                        <p className="mx-auto text-center text-white font-nunito font-bold">
+                          {e.title_right}
+                        </p>
+                      </div>
+                    </div>
+                  </>
+                )}
+                <img className="w-full" src={`${e.img}`} alt="img" />
+              </div>
+            );
+          })}
+        </Slide>
       </div>
-      <div className="prev" onClick={() => paginate(-1)}>
-        {"‣"}
-      </div>
-    </div>
+    </motion.section>
   );
 };
+
 export default BannerSlider;
