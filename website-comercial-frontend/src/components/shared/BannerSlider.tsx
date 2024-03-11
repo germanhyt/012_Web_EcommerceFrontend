@@ -13,21 +13,21 @@ const BannerSlider = () => {
     },
     {
       id: 2,
-      img: "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709948228/Imagenes_Portafolio/frutos-secos_vhd3fh.svg",
+      img: "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709948228/Ecommerce-frontend/frutos-secos_vhd3fh.svg",
       title_right: "Frutos Secos Naturales",
       title_middle: "",
       show_title_middle: false,
     },
     {
       id: 3,
-      img: "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709948228/Imagenes_Portafolio/menestras_merg9w.svg",
+      img: "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709948228/Ecommerce-frontend/menestras_merg9w.svg",
       title_right: "Menestras Nacionales e Importados",
       title_middle: "",
       show_title_middle: false,
     },
     {
       id: 4,
-      img: "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709948229/Imagenes_Portafolio/embutidos_o438sw.svg",
+      img: "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709948229/Ecommerce-frontend/embutidos_o438sw.svg",
       title_right: "Embutidos San Fernando",
       title_middle: "",
       show_title_middle: false,
@@ -79,19 +79,21 @@ const BannerSlider = () => {
       animate={{ opacity: 1 }}
       className="relative "
     >
-      <div className=" w-[100vw] mt-6 sm:mt-28">
+      <div className="w-[100vw] pt-6 sm:pt-28">
         <Slide {...properties}>
           {images.map((e) => {
             return (
               <div key={e.id} className="bg-cover overflow-hidden relative">
                 {e.show_title_middle ? (
                   <div className="absolute top-0 w-full h-full flex justify-center items-center">
-                    <h2 className="z-50 text-white text-xs sm:text-[32px] text-center font-nunito font-bold">{e.title_middle}</h2>
+                    <h2 className="z-50 text-white text-xs sm:text-[32px] text-center font-nunito font-bold">
+                      {e.title_middle}
+                    </h2>
                   </div>
                 ) : (
                   <>
                     <div className="absolute top-0 right-0 h-full">
-                      <div className="bg-red-600 w-[150px] sm:w-[400px] h-full px-5 bg-triangle flex items-center justify-center text-xs sm:text-lg">
+                      <div className="bg-[#990000] dark:bg-black w-[150px] sm:w-[400px] h-full px-5 bg-triangle flex items-center justify-center text-xs sm:text-lg">
                         <p className="mx-auto text-center text-white font-nunito font-bold">
                           {e.title_right}
                         </p>

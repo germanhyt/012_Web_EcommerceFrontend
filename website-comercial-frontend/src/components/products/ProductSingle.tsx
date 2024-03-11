@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-const ProjectSingle = ({ title, category, image, numberproduct }) => {
+const ProductSingle = ({ title, category, image, numberproduct }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -13,7 +13,7 @@ const ProjectSingle = ({ title, category, image, numberproduct }) => {
       }}
     >
       <Link
-        to={`/projects/single-project/${numberproduct}`}
+        to={`/products/single-product/${numberproduct}`}
         aria-label="Single Project"
       >
         <div className="rounded-xl shadow-lg hover:shadow-xl cursor-pointer mb-10 sm:mb-0 bg-secondary-light dark:bg-ternary-dark">
@@ -38,4 +38,4 @@ const ProjectSingle = ({ title, category, image, numberproduct }) => {
   );
 };
 
-export default ProjectSingle;
+export default ProductSingle;

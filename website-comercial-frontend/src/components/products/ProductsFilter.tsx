@@ -7,7 +7,7 @@ const selectOptions = [
 	'Productos de Limpieza'
 ];
 
-const ProjectsFilter = ({ setSelectProject }) => {
+const ProductsFilter = ({ setSelectProject }) => {
 
 
 	return (
@@ -47,4 +47,4 @@ const ProjectsFilter = ({ setSelectProject }) => {
 	);
 };
 
-export default ProjectsFilter;
+export default ProductsFilter;

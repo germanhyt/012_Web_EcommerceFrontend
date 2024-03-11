@@ -40,18 +40,18 @@ const PageHeader = () => {
           <div className="flex justify-between items-center px-4 sm:px-0">
             <div className="">
               <Link to="/">
-                {activeTheme === "dark" ? (
+                {activeTheme !== "dark" ? (
                   <img
-                    src="https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709931477/Ecommerce-frontend/shopify_v2_lsewam.svg"
+                    src="https://res.cloudinary.com/dz0ajaf3i/image/upload/v1710111058/Ecommerce-frontend/logo-dark_r0lplu.svg"
                     width={"56px"}
                     className="w-14"
                     alt="Dark Logo"
                   />
                 ) : (
                   <img
-                    src="https://res.cloudinary.com/dz0ajaf3i/image/upload/v1709931142/Ecommerce-frontend/shopify_2_tradmr.svg"
+                    src="https://res.cloudinary.com/dz0ajaf3i/image/upload/v1710110417/Ecommerce-frontend/logo-dark_uhlfmo.png"
                     width={"56px"}
-                    className="w-14"
+                    className="w-14 "
                     alt="Dark Logo"
                   />
                 )}

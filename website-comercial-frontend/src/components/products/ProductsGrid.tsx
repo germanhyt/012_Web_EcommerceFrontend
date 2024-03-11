@@ -1,24 +1,17 @@
 import { useContext } from "react";
 import { ProductsContext } from "@/core/hooks";
 import { FiSearch } from "react-icons/fi";
-import ProjectsFilter from "./ProjectsFilter";
-import ProjectSingle from "./ProjectSingle";
+import ProductsFilter from "./ProductsFilter";
+import ProductSingle from "./ProductSingle";
 import { Product } from "@/assets/data/productsData";
+import { motion } from "framer-motion";
+import ProductsContextType from "@/layouts/domain/ProductsContextType";
 
 interface IProps {
   page: string;
 }
 
-interface ProductsContextType {
-  products: Product[];
-  searchProduct: string;
-  setSearchProduct: React.Dispatch<React.SetStateAction<string>>;
-  selectProduct: string;
-  setSelectProduct: React.Dispatch<React.SetStateAction<string>>;
-  idProduct?: number;
-  searchProductByTitle: Product[];
-  selectProductsByCategory: Product[];
-}
+
 
 const ProductsGrid = ({ page }: IProps) => {
   const {
@@ -34,7 +27,11 @@ const ProductsGrid = ({ page }: IProps) => {
   console.log("Productos ", products);
 
   return (
-    <section className="container mx-auto  py-5 sm:py-10 mt-5 sm:mt-10">
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="container mx-auto py-8 sm:py-16"
+    >
       <div className="text-center">
         <p className="font-general-medium text-2xl sm:text-4xl mb-1 text-ternary-dark dark:text-ternary-light">
           Proyectos realizados
@@ -110,7 +107,7 @@ const ProductsGrid = ({ page }: IProps) => {
             />
           </div>
 
-          <ProjectsFilter setSelectProject={setSelectProduct} />
+          <ProductsFilter setSelectProject={setSelectProduct} />
         </div>
       </div>
 
@@ -118,7 +115,7 @@ const ProductsGrid = ({ page }: IProps) => {
         {selectProduct
           ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
             selectProductsByCategory.map((product: Product) => (
-              <ProjectSingle
+              <ProductSingle
                 title={product.title}
                 category={product.category}
                 image={product.img}
@@ -128,7 +125,7 @@ const ProductsGrid = ({ page }: IProps) => {
             ))
           : searchProduct
           ? searchProductByTitle.map((product: Product) => (
-              <ProjectSingle
+              <ProductSingle
                 title={product.title}
                 category={product.category}
                 image={product.img}
@@ -140,7 +137,7 @@ const ProductsGrid = ({ page }: IProps) => {
           ? products
               .filter((_p, index) => index < 6)
               .map((product: Product) => (
-                <ProjectSingle
+                <ProductSingle
                   title={product.title}
                   category={product.category}
                   image={product.img}
@@ -149,7 +146,7 @@ const ProductsGrid = ({ page }: IProps) => {
                 />
               ))
           : products.map((product: Product) => (
-              <ProjectSingle
+              <ProductSingle
                 title={product.title}
                 category={product.category}
                 image={product.img}
@@ -158,7 +155,7 @@ const ProductsGrid = ({ page }: IProps) => {
               />
             ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

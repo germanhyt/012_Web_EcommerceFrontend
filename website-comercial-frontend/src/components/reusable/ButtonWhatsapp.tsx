@@ -1,4 +1,4 @@
-function ButtonWhatsapp() {
+const ButtonWhatsapp = () => {
   return (
     <div className="relative hidden sm:flex">
       <div className="fixed bottom-5 right-5 z-10 hover:scale-[0.9] transition-all duration-300">
@@ -15,6 +15,6 @@ function ButtonWhatsapp() {
       </div>
     </div>
   );
-}
+};
 
 export default ButtonWhatsapp;
