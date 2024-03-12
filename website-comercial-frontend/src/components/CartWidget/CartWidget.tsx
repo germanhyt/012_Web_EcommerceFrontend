@@ -53,10 +53,10 @@ const CartWidget = () => {
                 <MenuItem
                   key={cp.id}
                   onClick={handleClose}
-                  className="flex gap-2 h-auto w-auto"
+                  className="flex flex-col sm:flex-row gap-2 h-auto w-auto"
                 >
                   <img src={cp.img} alt="img" className="w-12 sm:w-14" />
-                  <div className="flex items-center justify-center my-2 sm:my-5">
+                  <div className="flex flex-col sm:flex-row items-center justify-center my-2 sm:my-5">
                     <p>{cp.name}</p>
                     <p>s/. {cp.price}</p>
                     <p>Cantidad: {cp.quantity}</p>
