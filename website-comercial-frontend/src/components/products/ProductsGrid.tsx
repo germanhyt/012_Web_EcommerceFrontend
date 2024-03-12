@@ -11,7 +11,6 @@ interface IProps {
   page: string;
 }
 
-
 const ProductsGrid = ({ page }: IProps) => {
   const {
     products,
@@ -33,7 +32,7 @@ const ProductsGrid = ({ page }: IProps) => {
     >
       <div className="text-center">
         <p className="font-general-medium text-2xl sm:text-4xl mb-1 text-ternary-dark dark:text-ternary-light">
-          Proyectos realizados
+          Productos
         </p>
       </div>
 
@@ -47,7 +46,7 @@ const ProductsGrid = ({ page }: IProps) => {
               mb-3
               "
         >
-          Buscar proyectos por título o fltrar por categoría
+          Buscar producto por título o fltrar por categoría
         </h3>
         <div
           className="

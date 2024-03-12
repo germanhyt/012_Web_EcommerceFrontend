@@ -17,6 +17,7 @@ const Products = lazy(() => import("@/layouts/views/Products"));
 const Product = lazy(() => import("@/layouts/views/Product"));
 const AboutUs = lazy(() => import("@/layouts/views/AboutUs"));
 const Contact = lazy(() => import("@/layouts/views/Contact"));
+const Cart = lazy(() => import("@/layouts/views/Cart"));
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
                   ))}
                   <Route path="/about-us" element={<AboutUs />} />
                   <Route path="/contact" element={<Contact />} />
+                  <Route path="/cart" element={<Cart />} />
                 </Routes>
               </Suspense>
               <PageFooter />
