@@ -2,6 +2,7 @@ import ProductGallery from "@/components/products/ProductGallery";
 import ProductHeader from "@/components/products/ProductHeader";
 import ProductInfo from "@/components/products/ProductInfo";
 import { ProductsProvider } from "@/core/hooks";
+import CartProvider from "@/core/hooks/CartContext";
 import { motion } from "framer-motion";
 
 interface IProps {
@@ -22,9 +23,11 @@ const Product = ({ idProduct }: IProps) => {
     >
       <div className="container mx-auto py-8 sm:py-16">
         <ProductsProvider idProduct={idProduct}>
-          <ProductHeader /> 
+          <ProductHeader />
           <ProductGallery />
-          <ProductInfo />
+          <CartProvider>
+            <ProductInfo />
+          </CartProvider>
         </ProductsProvider>
       </div>
     </motion.section>
