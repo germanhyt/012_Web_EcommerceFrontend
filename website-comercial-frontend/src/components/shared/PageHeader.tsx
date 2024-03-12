@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useThemeSwitcher } from "@/core/hooks";
 import Button from "react-bootstrap/Button";
+import CartWidget from "../CartWidget/CartWidget";
 
 const PageHeader = () => {
   // Hooks
@@ -24,7 +25,7 @@ const PageHeader = () => {
   }, [isScrolled]);
 
   return (
-    <header className="relative flex flex-col flex-wrap overflow-x-hidden">
+    <header className="z-50 relative flex flex-col flex-wrap overflow-x-hidden">
       <motion.nav
         id="nav"
         className="w-full fixed top-0 right-0 left-0 backdrop-filter"
@@ -115,6 +116,7 @@ const PageHeader = () => {
                 <FiSun className="text-gray-200 hover:text-gray-50 text-xl" />
               )}
             </div>
+            <CartWidget />
           </div>
         </div>
       </motion.nav>

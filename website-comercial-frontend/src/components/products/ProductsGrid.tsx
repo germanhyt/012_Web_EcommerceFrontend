@@ -12,7 +12,6 @@ interface IProps {
 }
 
 
-
 const ProductsGrid = ({ page }: IProps) => {
   const {
     products,

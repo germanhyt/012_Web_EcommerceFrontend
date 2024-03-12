@@ -2,8 +2,10 @@ import { ReactNode, createContext, useState } from "react";
 
 interface CartProduct {
   id: number;
+  name: string;
   quantity: number;
   price: number;
+  img: string;
 }
 
 interface CartProductsContextType {
@@ -30,7 +32,7 @@ export const CartContext = createContext<CartProductsContextType>({
 
 const CartProvider = (props: IProps) => {
   const [cartProducts, setCartProducts] = useState<CartProduct[]>(
-    JSON.parse(localStorage.getItem("products") || "[]")
+    JSON.parse(localStorage.products || "[]")
   );
 
   const reloadStore = (id: number) => {
@@ -38,16 +40,20 @@ const CartProvider = (props: IProps) => {
   };
 
   const addProductToCart = (product: CartProduct, quantity: number) => {
-    const existente: CartProduct | undefined = cartProducts.find(
-      (cp: CartProduct) => cp.id === product.id
+    const existingProductIndex = cartProducts.findIndex(
+      (cp) => cp.id === product.id
     );
 
-    if (existente !== null) {
-      product.quantity = product.quantity + quantity;
-      setCartProducts((cp) => [...cp, product]);
+    if (existingProductIndex !== -1) {
+      const updatedProducts = [...cartProducts];
+      updatedProducts[existingProductIndex].quantity += quantity;
+      setCartProducts(updatedProducts);
+      localStorage.setItem("products", JSON.stringify(updatedProducts));
+    } else {
+      setCartProducts([...cartProducts, { ...product, quantity }]);
       localStorage.setItem(
         "products",
-        JSON.stringify([...cartProducts, product])
+        JSON.stringify([...cartProducts, { ...product, quantity }])
       );
     }
   };

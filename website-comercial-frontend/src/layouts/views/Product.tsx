@@ -2,7 +2,6 @@ import ProductGallery from "@/components/products/ProductGallery";
 import ProductHeader from "@/components/products/ProductHeader";
 import ProductInfo from "@/components/products/ProductInfo";
 import { ProductsProvider } from "@/core/hooks";
-import CartProvider from "@/core/hooks/CartContext";
 import { motion } from "framer-motion";
 
 interface IProps {
@@ -25,9 +24,7 @@ const Product = ({ idProduct }: IProps) => {
         <ProductsProvider idProduct={idProduct}>
           <ProductHeader />
           <ProductGallery />
-          <CartProvider>
-            <ProductInfo />
-          </CartProvider>
+          <ProductInfo />
         </ProductsProvider>
       </div>
     </motion.section>

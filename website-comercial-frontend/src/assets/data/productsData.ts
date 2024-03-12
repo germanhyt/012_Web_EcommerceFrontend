@@ -67,7 +67,7 @@ export const productsData: Product[] = [
       },
     ],
     ProductsInfo: {
-      ProductHeading: "Acerca del producto",
+      ProductHeading: "Datos del producto:",
       ProductDetails: [
         {
           id: 1,
@@ -129,7 +129,7 @@ export const productsData: Product[] = [
       },
     ],
     ProductsInfo: {
-      ProductHeading: "Acerca del producto",
+      ProductHeading: "Datos del producto:",
       ProductDetails: [
         {
           id: 1,
@@ -191,7 +191,7 @@ export const productsData: Product[] = [
       },
     ],
     ProductsInfo: {
-      ProductHeading: "Acerca del producto",
+      ProductHeading: "Datos del producto:",
       ProductDetails: [
         {
           id: 1,
@@ -259,7 +259,7 @@ export const productsData: Product[] = [
 
     ],
     ProductsInfo: {
-      ProductHeading: "Acerca del producto",
+      ProductHeading: "Datos del producto:",
       ProductDetails: [
         {
           id: 1,
