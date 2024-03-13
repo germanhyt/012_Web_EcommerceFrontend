@@ -41,18 +41,46 @@ const Cart = () => {
     });
   };
 
-  const handleImageChange = (e) => {
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+
+    const convertido = await toBase64(file);
+    console.log("FILE ", file);
+    console.log("convertido ", convertido);
+
     setFormData({
       ...formData,
-      image: e.target.files[0],
+      image: "asd",
     });
   };
 
   const form = useRef<HTMLFormElement>(null);
+
   const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (form.current) {
+      setLoading(true);
+      e;
+      const formDataToSend = new FormData(form.current);
+
+      if (formData.image) {
+        formDataToSend.append("image", formData.image);
+      }
+
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataToSend.append(key, value);
+      });
+
+      // if (form.current) {
       emailjs
         .sendForm(
           "service_988p1xn",
@@ -63,7 +91,10 @@ const Cart = () => {
         .then(
           (result) => {
             console.log(result.text);
-            if (form.current) form.current.reset(); //reset inputs of form
+            if (form.current) {
+              form.current.reset(); //reset inputs of form
+              setOpenModal(false);
+            }
           },
           (error) => {
             console.log(error.text);
